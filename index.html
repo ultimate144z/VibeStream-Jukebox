@@ -37,12 +37,12 @@
             align-items: center;
         }
         .website-title {
-            color: #fff; /* White text color */
-            font-size: 20px; /* Larger font size */
+            color: #fff;
+            font-size: 20px;
             text-align: center;
             width: 100%;
-            margin-bottom: 10px; /* Space above the image */
-            opacity: 0.8; /* Slightly transparent */
+            margin-bottom: 10px;
+            opacity: 0.8;
         }
 
         .music-player img {
@@ -96,7 +96,7 @@
 
         
         #suggestion-box {
-            margin-top: 20px; /* Ensure this is at the end of the first viewport height */
+            margin-top: 20px;
             padding: 20px;
             text-align: center;
             background: rgba(0, 0, 0, 0.7);
@@ -118,12 +118,12 @@
             position: fixed;
             top: 10px;
             left: 10px;
-            color: #fff; /* Choose a color that fits the theme */
-            font-family: 'Arial', sans-serif; /* Choose a font that fits the theme */
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            background-color: rgba(0, 0, 0, 0.5);
             padding: 5px 10px;
             border-radius: 8px;
-            z-index: 2000; /* Ensure it's visible above other content */
+            z-index: 2000;
         }
     
         
@@ -131,64 +131,65 @@
             width: 100%;
             padding: 20px;
             box-sizing: border-box;
-            background: rgba(0,0,0,0.5); /* Semi-transparent background */
-            color: white; /* Text color */
-            text-align: center; /* Center the text */
-            margin-top: 100vh; /* Position it below the first viewport */
-            z-index: 5; /* Ensure it's above the fixed position elements if needed */
+            background: rgba(0,0,0,0.5);
+            color: white;
+            text-align: center;
+            margin-top: 100vh;
+            z-index: 5;
         }
 
-        /* Dark theme styles for the journal section */
-#journal-section {
-    background-color: rgba(0, 0, 0, 0.8); /* Dark background */
-    color: #ccc; /* Lighter text color */
-}
+        #journal-section {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ccc;
+        }
 
-#journal-entry {
-    background-color: rgba(0, 0, 0, 0.8); /* Darker element backgrounds */
-    color: #ccc; /* Lighter text color */
-    border: 1px solid #444; /* Subtle borders for input elements */
-}
+        #journal-entry {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ccc;
+            border: 1px solid #444;
+        }
 
-#journal-section button {
-    background-color: rgba(0, 0, 0, 0.8); /* Darker background for buttons */
-    color: #ccc; /* Lighter text color for buttons */
-}
+        #journal-section button {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #ccc;
+        }
 
-#journal-section button:hover {
-    background-color:rgba(0, 0, 0, 0.8); /* Slightly lighter button background on hover */
-}
+        #journal-section button:hover {
+            background-color:rgba(0, 0, 0, 0.8);
+        }
 
-        
-        /* Styles to make the body element scrollable */
         body, html {
             height: auto;
             overflow: auto;
         }
 
-        #coding-trinket {
-  /* CSS properties here */
-  filter: invert(1) hue-rotate(180deg);
-}
-
+        .mood-tracker {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            width: 80%;
+        }
+        .mood-button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
 
     </style>
 </head>
 <body>
-
-
     <div id="navigation" style="position: fixed; top: 0; right: 20px; z-index: 3000; padding: 10px; background: rgba(0, 0, 0, 0.2); border-radius: 0px 0px 5px 5px;">
         <a href="#" id="home-link" style="color: #fff; text-decoration: none; font-size: 20px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">Home</a>
         <a href="#journal-section" id="journal-link" style="color: #fff; text-decoration: none; font-size: 20px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">Journal</a>
         <a href="#todo-section" id="todo-link" style="color: #fff; text-decoration: none; font-size: 20px; padding: 5px 10px; border-radius: 5px; margin-right: 10px;">To-Do List</a>
         <a href="https://www.crunchyroll.com" target="_blank" id="anime-link" style="color: #fff; text-decoration: none; font-size: 20px; padding: 5px 10px; border-radius: 5px;">Anime</a>
-        <a href="https://chat.openai.com/" target="_blank" id="anime-link" style="color: #fff; text-decoration: none; font-size: 20px; padding: 5px 10px; border-radius: 5px;">GPT</a>
-
+        <a href="https://chat.openai.com/" target="_blank" id="gpt-link" style="color: #fff; text-decoration: none; font-size: 20px; padding: 5px 10px; border-radius: 5px;">GPT</a>
     </div>
-    
 
-     <!-- Suggestion box section -->
-     <div id="suggestion-box">
+    <div id="suggestion-box">
         Click for a suggestion!
     </div>
 
@@ -201,7 +202,6 @@
         <img src="image3.jpg" alt="Aesthetic Image" />
         <div class="music-player-controls">
           <button class="button" id="prev">
-            <!-- SVG for previous -->
             <svg fill="#ffffff" viewBox="0 0 24 24">
                 <path d="M19 20L9 12l10-8v16zM5 20V4l10 8-10 8z"/>
             </svg>
@@ -225,185 +225,182 @@
         </audio>
     </div>
 
-     <!-- Additional "webpage" or content section below -->
     <div id="additional-content">
         <p>Explore more activities, engage with content, or relax with additional interactive elements.</p>
-        <!-- Add more content as desired -->
     </div>
 
-    <!-- Coding section -->
-<div id="coding-section" style="background-color: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 50px 0; min-height: 100vh; font-family: 'Arial', sans-serif;">
-    <h2 style="margin-bottom: 20px;">Coding Space</h2>
-    <iframe id="coding-trinket" src="https://trinket.io/embed/python/ccd5f3722f" width="100%" height="600" frameborder="0" marginwidth="0" marginheight="0" allowfullscreen></iframe>
-</div>
-
-
-<!-- To-Do List section -->
-<div id="todo-section" style="background-color: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 50px 0; min-height: 100vh; font-family: 'Arial', sans-serif;">
-    <h2 style="margin-bottom: 20px;">To-Do List</h2>
-    <input id="new-task" type="text" placeholder="Add a new task" style="width: 60%; padding: 10px; border-radius: 5px; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.5); color: #ccc; border: 1px solid #444;">
-    <button onclick="addTask()" style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #ff4081; color: white; border: none; cursor: pointer;">Add Task</button>
-    <ul id="task-list" style="list-style-type: none; padding: 0;">
-        <!-- Tasks will be added here dynamically -->
-    </ul>
-</div>
-
-    <!-- Journal section, acting as a second "webpage" -->
-<div id="journal-section" style="background-color: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 50px 0; min-height: 100vh; font-family: 'Arial', sans-serif;">
-    <h2 style="margin-bottom: 20px;">My Journal</h2>
-    <textarea id="journal-entry" placeholder="What's on your mind today?" style="width: 80%; height: 150px; margin-bottom: 20px; border-radius: 5px; padding: 10px;"></textarea><br>
-    <button onclick="saveEntry()" style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #ff4081; color: white; border: none; cursor: pointer;">Save Entry</button>
-    <div id="journal-entries" style="margin-top: 20px;">
-        <!-- Previous journal entries will be loaded here -->
+    <!-- New Mood Tracker Section -->
+    <div class="mood-tracker">
+        <h2>How are you feeling?</h2>
+        <button class="mood-button" style="background-color: #4CAF50;" onclick="trackMood('😊 Calm')">😊 Calm</button>
+        <button class="mood-button" style="background-color: #FFEB3B;" onclick="trackMood('😐 Neutral')">😐 Neutral</button>
+        <button class="mood-button" style="background-color: #FF9800;" onclick="trackMood('😟 Anxious')">😟 Anxious</button>
+        <button class="mood-button" style="background-color: #F44336;" onclick="trackMood('😞 Sad')">😞 Sad</button>
+        <div id="mood-history" style="margin-top: 20px; color: white;"></div>
     </div>
-</div>
 
-<!-- At the bottom of your journal section in the HTML, add a button for loading more entries -->
-<button id="load-more" onclick="loadMoreEntries()" style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #ff4081; color: white; border: none; cursor: pointer; margin-top: 20px;">Load More</button>
+    <div id="todo-section" style="background-color: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 50px 0; min-height: 100vh; font-family: 'Arial', sans-serif;">
+        <h2 style="margin-bottom: 20px;">To-Do List</h2>
+        <input id="new-task" type="text" placeholder="Add a new task" style="width: 60%; padding: 10px; border-radius: 5px; margin-bottom: 20px; background-color: rgba(0, 0, 0, 0.5); color: #ccc; border: 1px solid #444;">
+        <button onclick="addTask()" style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #ff4081; color: white; border: none; cursor: pointer;">Add Task</button>
+        <ul id="task-list" style="list-style-type: none; padding: 0;">
+        </ul>
+    </div>
 
+    <div id="journal-section" style="background-color: rgba(0, 0, 0, 0.8); color: white; text-align: center; padding: 50px 0; min-height: 100vh; font-family: 'Arial', sans-serif;">
+        <h2 style="margin-bottom: 20px;">My Journal</h2>
+        <textarea id="journal-entry" placeholder="What's on your mind today?" style="width: 80%; height: 150px; margin-bottom: 20px; border-radius: 5px; padding: 10px;"></textarea><br>
+        <button onclick="saveEntry()" style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #ff4081; color: white; border: none; cursor: pointer;">Save Entry</button>
+        <div id="journal-entries" style="margin-top: 20px;">
+        </div>
+        <button id="load-more" onclick="loadMoreEntries()" style="padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #ff4081; color: white; border: none; cursor: pointer; margin-top: 20px;">Load More</button>
+    </div>
 
     <script>
+        // To-Do List with localStorage
+        let taskIdCounter = localStorage.getItem('taskIdCounter') ? parseInt(localStorage.getItem('taskIdCounter')) : 0;
+        
+        function loadTasks() {
+            const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = '';
+            savedTasks.forEach(task => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span id="task-text-${task.id}">${task.text}</span>
+                    <button onclick="deleteTask(${task.id})">Delete</button>
+                    <button onclick="editTask(${task.id})">Edit</button>
+                `;
+                li.setAttribute('id', `task-${task.id}`);
+                li.style.padding = "10px";
+                li.style.marginBottom = "5px";
+                li.style.background = "rgba(255, 255, 255, 0.1)";
+                taskList.appendChild(li);
+            });
+            taskIdCounter = savedTasks.length > 0 ? Math.max(...savedTasks.map(t => t.id)) + 1 : 0;
+        }
 
-let taskIdCounter = 0; // Add this at the beginning of your <script>
+        function saveTasks() {
+            const tasks = [];
+            document.querySelectorAll('#task-list li').forEach(li => {
+                tasks.push({
+                    id: parseInt(li.id.split('-')[1]),
+                    text: li.querySelector('span').innerText
+                });
+            });
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            localStorage.setItem('taskIdCounter', taskIdCounter);
+        }
 
-function addTask() {
-    const taskInput = document.getElementById('new-task');
-    const taskList = document.getElementById('task-list');
-    const task = taskInput.value.trim();
+        function addTask() {
+            const taskInput = document.getElementById('new-task');
+            const task = taskInput.value.trim();
+            if (task) {
+                const taskList = document.getElementById('task-list');
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span id="task-text-${taskIdCounter}">${task}</span>
+                    <button onclick="deleteTask(${taskIdCounter})">Delete</button>
+                    <button onclick="editTask(${taskIdCounter})">Edit</button>
+                `;
+                li.setAttribute('id', `task-${taskIdCounter}`);
+                li.style.padding = "10px";
+                li.style.marginBottom = "5px";
+                li.style.background = "rgba(255, 255, 255, 0.1)";
+                taskList.appendChild(li);
+                taskInput.value = '';
+                taskIdCounter++;
+                saveTasks();
+            }
+        }
 
-    if (task) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <span id="task-text-${taskIdCounter}">${task}</span>
-            <button onclick="deleteTask(${taskIdCounter})">Delete</button>
-            <button onclick="editTask(${taskIdCounter})">Edit</button>
-        `;
-        li.setAttribute('id', `task-${taskIdCounter}`);
-        li.style.padding = "10px";
-        li.style.marginBottom = "5px";
-        li.style.background = "rgba(255, 255, 255, 0.1)";
-        taskList.appendChild(li);
-        taskInput.value = '';
-        taskIdCounter++; // Increment the counter after adding a task
-    }
-}
+        function deleteTask(taskId) {
+            const taskItem = document.getElementById(`task-${taskId}`);
+            taskItem.remove();
+            saveTasks();
+        }
 
-function deleteTask(taskId) {
-    const taskItem = document.getElementById(`task-${taskId}`);
-    taskItem.remove();
-}
+        function editTask(taskId) {
+            const taskSpan = document.getElementById(`task-text-${taskId}`);
+            taskSpan.contentEditable = true;
+            taskSpan.focus();
+            taskSpan.addEventListener('blur', () => {
+                taskSpan.contentEditable = false;
+                saveTasks();
+            });
+        }
 
-function editTask(taskId) {
-    const taskSpan = document.getElementById(`task-text-${taskId}`);
-    const originalText = taskSpan.innerText;
-    taskSpan.contentEditable = true;
-    taskSpan.focus();
-    // Optionally add a save button or use the blur event to save
-}
+        // Journal Entries
+        let currentIndex = 0;
+        const entriesToShow = 10;
 
-function updateTask(taskId) {
-    const taskSpan = document.getElementById(`task-text-${taskId}`);
-    // Validate and possibly sanitize the input here
-    taskSpan.contentEditable = false;
-}
+        function saveEntry() {
+            const entryText = document.getElementById('journal-entry').value;
+            const time = new Date().toLocaleString();
+            const entry = `${time}: ${entryText}`;
+            let entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
+            entries.push(entry);
+            localStorage.setItem('journalEntries', JSON.stringify(entries));
+            document.getElementById('journal-entry').value = '';
+            displayEntries(true);
+        }
 
+        // Mood Tracker
+        function trackMood(mood) {
+            const moodEntry = {
+                mood: mood,
+                timestamp: new Date().toLocaleString()
+            };
+            let moods = JSON.parse(localStorage.getItem('moodHistory')) || [];
+            moods.push(moodEntry);
+            localStorage.setItem('moodHistory', JSON.stringify(moods));
+            displayMoodHistory();
+        }
 
-let currentIndex = 0;
-const entriesToShow = 10;
+        function displayMoodHistory() {
+            const moods = JSON.parse(localStorage.getItem('moodHistory')) || [];
+            const historyDiv = document.getElementById('mood-history');
+            historyDiv.innerHTML = '<h3>Mood History</h3>';
+            moods.slice(-5).reverse().forEach(mood => {
+                historyDiv.innerHTML += `<p>${mood.timestamp}: ${mood.mood}</p>`;
+            });
+        }
 
-function saveEntry() {
-    const entryText = document.getElementById('journal-entry').value;
-    const time = new Date().toLocaleString();
-    const entry = `${time}: ${entryText}`;
+        // Enhanced Suggestions and Quotes
+        const activities = [
+            "Try a new recipe", "Do some light stretching", 
+            "Write down 3 things you're grateful for",
+            "Listen to a podcast", "Organize your space",
+            "Try a meditation session", "Read a book chapter",
+            "Do a digital detox for 1 hour", "Plan your perfect day",
+            "Try a mindfulness exercise", "Write a letter to your future self"
+        ];
 
-    let entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
-    entries.push(entry);
-    localStorage.setItem('journalEntries', JSON.stringify(entries));
+        const quotes = [
+            "You're capable of amazing things.",
+            "Progress, not perfection.",
+            "Small steps still move you forward.",
+            "Your mental health matters.",
+            "It's okay to take a break.",
+            "You are enough just as you are.",
+            "This moment is temporary.",
+            "Breathe in calm, breathe out stress."
+        ];
 
-    document.getElementById('journal-entry').value = '';
-    displayEntries(true);
-}
+        function getDailyQuote() {
+            return quotes[Math.floor(Math.random() * quotes.length)];
+        }
 
-function displayEntries(reset = false) {
-    const entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
-    let container = document.getElementById('journal-entries');
-
-    if (reset) {
-        container.innerHTML = '';
-        currentIndex = 0;
-    }
-
-    let html = '';
-    for (let i = currentIndex; i < Math.min(entries.length, currentIndex + entriesToShow); i++) {
-        html += `<div id="entry-${i}">
-            <p contenteditable="false" id="text-${i}">${entries[i]}</p>
-            <button onclick="editEntry(${i})">Edit</button>
-            <button onclick="deleteEntry(${i})">Delete</button>
-            <button onclick="updateEntry(${i})" style="display:none;">Update</button>
-         </div>`;
-    }
-    container.innerHTML += html;
-    currentIndex += entriesToShow;
-
-    document.getElementById('load-more').style.display = currentIndex >= entries.length ? 'none' : 'inline-block';
-}
-
-function loadMoreEntries() {
-    displayEntries();
-}
-
-
-function deleteEntry(index) {
-    let entries = JSON.parse(localStorage.getItem('journalEntries'));
-    entries.splice(index, 1);
-    localStorage.setItem('journalEntries', JSON.stringify(entries));
-    displayEntries(true);
-}
-
-function editEntry(index) {
-    let textP = document.getElementById(`text-${index}`);
-    textP.contentEditable = true;
-    textP.focus();
-    document.querySelector(`#entry-${index} > button[onclick="editEntry(${index})"]`).style.display = 'none';
-    document.querySelector(`#entry-${index} > button[onclick="updateEntry(${index})"]`).style.display = 'inline';
-}
-
-function updateEntry(index) {
-    let textP = document.getElementById(`text-${index}`);
-    let updatedText = textP.innerText;
-    let entries = JSON.parse(localStorage.getItem('journalEntries'));
-    entries[index] = updatedText;
-    localStorage.setItem('journalEntries', JSON.stringify(entries));
-    textP.contentEditable = false;
-    document.querySelector(`#entry-${index} > button[onclick="editEntry(${index})"]`).style.display = 'inline';
-    document.querySelector(`#entry-${index} > button[onclick="updateEntry(${index})"]`).style.display = 'none';
-    displayEntries(true);
-}
-
-
-window.onload = function() {
-    displayEntries();
-};
-
-// Array of reminders
-const reminders = [
-    "Take a deep breath and relax.",
-    "Remember to stretch and take breaks.",
-    "Hydrate well throughout the day.",
-    "Practice gratitude, think of something you're thankful for.",
-    "Spend a few minutes in silence to clear your mind.",
-    // Add more reminders as you wish
-];
-
-// Function to display a random reminder based on the current day
-function displayDailyReminder() {
-    const today = new Date().getDate();
-    const reminderIndex = today % reminders.length; // Ensures a new reminder each day
-    document.getElementById('daily-reminder').textContent = reminders[reminderIndex];
-}
-
-// Call the function to display the reminder
-displayDailyReminder();
+        // Initialize components
+        window.onload = function() {
+            loadTasks();
+            displayEntries();
+            displayMoodHistory();
+            document.getElementById('daily-reminder').textContent = getDailyQuote();
+            setInterval(() => {
+                document.getElementById('daily-reminder').textContent = getDailyQuote();
+            }, 3600000); // Update quote every hour
+        };
 
 const startTime = Date.now();
 
