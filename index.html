@@ -246,7 +246,7 @@
     <a href="#" id="home-link">Home</a>
     <a href="#journal-section" id="journal-link">Journal</a>
     <a href="#todo-section" id="todo-link">To-Do List</a>
-    <a href="https://www.crunchyroll.com" target="_blank" id="anime-link">Anime</a>
+    <a href="https://9animetv.to/" target="_blank" id="anime-link">Anime</a>
     <a href="https://chat.openai.com/" target="_blank" id="gpt-link">GPT</a>
   </div>
 
@@ -305,6 +305,8 @@
     <button class="mood-button" style="background-color: #FF9800;" onclick="trackMood('😟 Anxious')">😟 Anxious</button>
     <button class="mood-button" style="background-color: #F44336;" onclick="trackMood('😞 Sad')">😞 Sad</button>
     <div id="mood-history" style="margin-top: 20px; color: white;"></div>
+    <!-- Reset Button for Mood Tracker -->
+    <button class="mood-button" style="background-color: #FF5722;" onclick="resetMoodHistory()">Reset Mood Tracker</button>
   </div>
 
   <!-- To-Do List Section -->
@@ -470,6 +472,11 @@
       moods.slice(-5).reverse().forEach(mood => {
         historyDiv.innerHTML += `<p>${mood.timestamp}: ${mood.mood}</p>`;
       });
+    }
+    // New function to reset mood history
+    function resetMoodHistory() {
+      localStorage.removeItem('moodHistory');
+      displayMoodHistory();
     }
     /* ------------------ Daily Reminder / Motivational Quotes ------------------ */
     const quotes = [
