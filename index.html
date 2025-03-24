@@ -21,6 +21,12 @@
       height: 100%;
       z-index: -1;
     }
+    /* Integrated Safespace Grid Container */
+    .safespace-grid {
+      position: relative;
+      height: 100vh;
+    }
+    /* Music Player inside the grid */
     .music-player {
       position: absolute;
       top: 50%;
@@ -92,7 +98,12 @@
       text-align: center;
       padding-top: 10px;
     }
+    /* Suggestion Box inside the grid */
     #suggestion-box {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: calc(60% + 120px);
       margin-top: 20px;
       padding: 20px;
       text-align: center;
@@ -102,12 +113,8 @@
       border-radius: 15px;
       width: 50%;
       max-width: 300px;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
       z-index: 1001;
       cursor: pointer;
-      top: calc(60% + 120px);
     }
     #aesthetic-clock {
       position: fixed;
@@ -239,9 +246,40 @@
     <a href="https://chat.openai.com/" target="_blank" id="gpt-link">GPT</a>
   </div>
 
-  <!-- Suggestion Box -->
-  <div id="suggestion-box">
-    Click for a suggestion!
+  <!-- Integrated BB & B Safespace Grid Container -->
+  <div class="safespace-grid">
+    <!-- Music Player -->
+    <div class="music-player">
+      <div class="website-title">BB & B's Safespace</div>
+      <img src="image3.jpg" alt="Aesthetic Image" />
+      <div class="music-player-controls">
+        <button class="button" id="prev">
+          <svg fill="#ffffff" viewBox="0 0 24 24">
+            <path d="M19 20L9 12l10-8v16zM5 20V4l10 8-10 8z"/>
+          </svg>
+        </button>
+        <button class="button" id="play">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z"/>
+          </svg>
+        </button>
+        <button class="button" id="next">
+          <svg viewBox="0 0 24 24">
+            <path d="M6 18l8.5-6L6 6v12zm9-12v12l8.5-6L15 6z"/>
+          </svg>
+        </button>
+        <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01">
+      </div>
+      <div id="songTitle" class="song-title">Song Name</div>
+      <audio id="audioPlayer" loop>
+        <source src="song1.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+    <!-- Suggestion Box -->
+    <div id="suggestion-box">
+      Click for a suggestion!
+    </div>
   </div>
 
   <!-- Aesthetic Clock -->
@@ -249,35 +287,6 @@
 
   <!-- Daily Reminder / Motivational Quote -->
   <div id="daily-reminder">Reminder will go here</div>
-
-  <!-- Music Player -->
-  <div class="music-player">
-    <div class="website-title">BB & B's Safespace</div>
-    <img src="image3.jpg" alt="Aesthetic Image" />
-    <div class="music-player-controls">
-      <button class="button" id="prev">
-        <svg fill="#ffffff" viewBox="0 0 24 24">
-          <path d="M19 20L9 12l10-8v16zM5 20V4l10 8-10 8z"/>
-        </svg>
-      </button>
-      <button class="button" id="play">
-        <svg viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z"/>
-        </svg>
-      </button>
-      <button class="button" id="next">
-        <svg viewBox="0 0 24 24">
-          <path d="M6 18l8.5-6L6 6v12zm9-12v12l8.5-6L15 6z"/>
-        </svg>
-      </button>
-      <input type="range" id="volume" class="volume-slider" min="0" max="1" step="0.01">
-    </div>
-    <div id="songTitle" class="song-title">Song Name</div>
-    <audio id="audioPlayer" loop>
-      <source src="song1.mp3" type="audio/mp3">
-      Your browser does not support the audio element.
-    </audio>
-  </div>
 
   <!-- Additional Content -->
   <div id="additional-content">
@@ -314,7 +323,6 @@
   <script>
     /* ------------------ To-Do List with localStorage ------------------ */
     let taskIdCounter = localStorage.getItem('taskIdCounter') ? parseInt(localStorage.getItem('taskIdCounter')) : 0;
-
     function loadTasks() {
       const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
       const taskList = document.getElementById('task-list');
@@ -334,7 +342,6 @@
       });
       taskIdCounter = savedTasks.length > 0 ? Math.max(...savedTasks.map(t => t.id)) + 1 : 0;
     }
-
     function saveTasks() {
       const tasks = [];
       document.querySelectorAll('#task-list li').forEach(li => {
@@ -346,7 +353,6 @@
       localStorage.setItem('tasks', JSON.stringify(tasks));
       localStorage.setItem('taskIdCounter', taskIdCounter);
     }
-
     function addTask() {
       const taskInput = document.getElementById('new-task');
       const task = taskInput.value.trim();
@@ -368,13 +374,11 @@
         saveTasks();
       }
     }
-
     function deleteTask(taskId) {
       const taskItem = document.getElementById(`task-${taskId}`);
       taskItem.remove();
       saveTasks();
     }
-
     function editTask(taskId) {
       const taskSpan = document.getElementById(`task-text-${taskId}`);
       taskSpan.contentEditable = true;
@@ -384,11 +388,9 @@
         saveTasks();
       });
     }
-
     /* ------------------ Journal Entries with localStorage ------------------ */
     let currentIndex = 0;
     const entriesToShow = 10;
-
     function saveEntry() {
       const entryText = document.getElementById('journal-entry').value;
       const time = new Date().toLocaleString();
@@ -399,7 +401,6 @@
       document.getElementById('journal-entry').value = '';
       displayEntries(true);
     }
-
     function displayEntries(reset = false) {
       const entries = JSON.parse(localStorage.getItem('journalEntries')) || [];
       const container = document.getElementById('journal-entries');
@@ -420,18 +421,15 @@
       currentIndex += entriesToShow;
       document.getElementById('load-more').style.display = currentIndex >= entries.length ? 'none' : 'inline-block';
     }
-
     function loadMoreEntries() {
       displayEntries();
     }
-
     function deleteEntry(index) {
       let entries = JSON.parse(localStorage.getItem('journalEntries'));
       entries.splice(index, 1);
       localStorage.setItem('journalEntries', JSON.stringify(entries));
       displayEntries(true);
     }
-
     function editEntry(index) {
       let textP = document.getElementById(`text-${index}`);
       textP.contentEditable = true;
@@ -439,7 +437,6 @@
       document.querySelector(`#entry-${index} > button[onclick="editEntry(${index})"]`).style.display = 'none';
       document.querySelector(`#entry-${index} > button[onclick="updateEntry(${index})"]`).style.display = 'inline';
     }
-
     function updateEntry(index) {
       let textP = document.getElementById(`text-${index}`);
       let updatedText = textP.innerText;
@@ -451,7 +448,6 @@
       document.querySelector(`#entry-${index} > button[onclick="updateEntry(${index})"]`).style.display = 'none';
       displayEntries(true);
     }
-
     /* ------------------ Mood Tracker ------------------ */
     function trackMood(mood) {
       const moodEntry = {
@@ -463,7 +459,6 @@
       localStorage.setItem('moodHistory', JSON.stringify(moods));
       displayMoodHistory();
     }
-
     function displayMoodHistory() {
       const moods = JSON.parse(localStorage.getItem('moodHistory')) || [];
       const historyDiv = document.getElementById('mood-history');
@@ -472,7 +467,6 @@
         historyDiv.innerHTML += `<p>${mood.timestamp}: ${mood.mood}</p>`;
       });
     }
-
     /* ------------------ Daily Reminder / Motivational Quotes ------------------ */
     const quotes = [
       "You're capable of amazing things.",
@@ -484,11 +478,9 @@
       "This moment is temporary.",
       "Breathe in calm, breathe out stress."
     ];
-
     function getDailyQuote() {
       return quotes[Math.floor(Math.random() * quotes.length)];
     }
-
     /* ------------------ Clock ------------------ */
     const startTime = Date.now();
     function updateClock() {
@@ -500,7 +492,6 @@
       document.getElementById('aesthetic-clock').textContent = `Time on site: ${formattedTime}`;
     }
     setInterval(updateClock, 1000);
-
     /* ------------------ Audio Player ------------------ */
     const audioPlayer = document.getElementById('audioPlayer');
     const playButton = document.getElementById('play');
@@ -514,18 +505,15 @@
       "Name of Life.mp3",
       "Safe Again.mp3"
     ];
-
     function playTrack(index) {
       audioPlayer.src = tracks[index];
       audioPlayer.play();
       playButton.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
       songTitle.textContent = `Playing: ${getSongName(tracks[index])}`;
     }
-
     function getSongName(filePath) {
       return filePath.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, '');
     }
-
     playButton.addEventListener('click', function() {
       if (audioPlayer.paused) {
         playTrack(currentTrackIndex);
@@ -534,21 +522,17 @@
         this.innerHTML = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
       }
     });
-
     prevButton.addEventListener('click', function() {
       currentTrackIndex = (currentTrackIndex + tracks.length - 1) % tracks.length;
       playTrack(currentTrackIndex);
     });
-
     nextButton.addEventListener('click', function() {
       currentTrackIndex = (currentTrackIndex + 1) % tracks.length;
       playTrack(currentTrackIndex);
     });
-
     volumeSlider.addEventListener('input', function() {
       audioPlayer.volume = this.value;
     });
-
     /* ------------------ Suggestion Feature ------------------ */
     const suggestionBox = document.getElementById('suggestion-box');
     const suggestionActivities = [
@@ -560,23 +544,19 @@
       "Relax, and listen to songs",
       "Just chill",
       "Try a new recipe",
-      "Listen to a podcast",
-      "Three things you're grateful for"
+      "Listen to a podcast"
     ];
     suggestionBox.addEventListener('click', () => {
       const randomIndex = Math.floor(Math.random() * suggestionActivities.length);
       suggestionBox.textContent = suggestionActivities[randomIndex];
     });
-
     /* ------------------ p5.js Background Animation ------------------ */
     let bgImage;
     let shootingStars = [];
     let fireflies = [];
-
     function preload() {
       bgImage = loadImage("image2.jpg");
     }
-
     function setup() {
       let cnv = createCanvas(windowWidth, windowHeight);
       cnv.style('display', 'block');
@@ -589,7 +569,6 @@
         fireflies.push(new Firefly(x, y));
       }
     }
-
     function draw() {
       image(bgImage, 0, 0, width, height);
       shootingStars.forEach((star, index) => {
@@ -607,7 +586,6 @@
         shootingStars.push(new ShootingStar());
       }
     }
-
     class Firefly {
       constructor(x, y) {
         this.x = x;
@@ -634,7 +612,6 @@
         ellipse(this.x, this.y, this.size);
       }
     }
-
     class ShootingStar {
       constructor() {
         this.x = random(width);
@@ -667,11 +644,9 @@
         }
       }
     }
-
     function windowResized() {
       resizeCanvas(windowWidth, windowHeight);
     }
-
     /* ------------------ Initialization ------------------ */
     window.onload = function() {
       loadTasks();
