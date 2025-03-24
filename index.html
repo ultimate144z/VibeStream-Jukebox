@@ -21,6 +21,46 @@
       height: 100%;
       z-index: -1;
     }
+    /* Navigation Bar */
+    #navigation {
+      position: fixed;
+      top: 0;
+      right: 20px;
+      z-index: 3000;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 0px 0px 5px 5px;
+    }
+    #navigation a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-right: 10px;
+    }
+    /* Aesthetic Clock (fixed) */
+    #aesthetic-clock {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 5px 10px;
+      border-radius: 8px;
+      z-index: 2000;
+    }
+    /* Daily Reminder / Motivational Quote - placed at the top */
+    #daily-reminder {
+      margin-top: 60px; /* Adjust if needed so it doesn't overlap with clock/nav */
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+      padding: 5px;
+      border-radius: 10px;
+      z-index: 100;
+    }
     /* Integrated Safespace Grid Container */
     .safespace-grid {
       position: relative;
@@ -116,25 +156,7 @@
       z-index: 1001;
       cursor: pointer;
     }
-    #aesthetic-clock {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-      color: #fff;
-      font-family: 'Arial', sans-serif;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 5px 10px;
-      border-radius: 8px;
-      z-index: 2000;
-    }
-    #daily-reminder {
-      color: #fff;
-      font-size: 20px;
-      text-align: center;
-      margin-bottom: 10px;
-      padding: 5px;
-      border-radius: 10px;
-    }
+    /* Additional Content */
     #additional-content {
       width: 100%;
       padding: 20px;
@@ -142,7 +164,7 @@
       background: rgba(0,0,0,0.5);
       color: white;
       text-align: center;
-      margin-top: 100vh;
+      margin-top: 0;
       z-index: 5;
     }
     /* Journal Section */
@@ -216,24 +238,6 @@
       border-radius: 5px;
       cursor: pointer;
     }
-    /* Navigation Bar */
-    #navigation {
-      position: fixed;
-      top: 0;
-      right: 20px;
-      z-index: 3000;
-      padding: 10px;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 0px 0px 5px 5px;
-    }
-    #navigation a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 20px;
-      padding: 5px 10px;
-      border-radius: 5px;
-      margin-right: 10px;
-    }
   </style>
 </head>
 <body>
@@ -245,6 +249,12 @@
     <a href="https://www.crunchyroll.com" target="_blank" id="anime-link">Anime</a>
     <a href="https://chat.openai.com/" target="_blank" id="gpt-link">GPT</a>
   </div>
+
+  <!-- Aesthetic Clock -->
+  <div id="aesthetic-clock"></div>
+
+  <!-- Daily Reminder / Motivational Quote -->
+  <div id="daily-reminder">Reminder will go here</div>
 
   <!-- Integrated BB & B Safespace Grid Container -->
   <div class="safespace-grid">
@@ -281,12 +291,6 @@
       Click for a suggestion!
     </div>
   </div>
-
-  <!-- Aesthetic Clock -->
-  <div id="aesthetic-clock"></div>
-
-  <!-- Daily Reminder / Motivational Quote -->
-  <div id="daily-reminder">Reminder will go here</div>
 
   <!-- Additional Content -->
   <div id="additional-content">
